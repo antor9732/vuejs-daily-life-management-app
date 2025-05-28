@@ -8,5 +8,5 @@ import todoList_ui from '@/components/todoList-ui.vue';
 </template>
 
 <style>
-@import '@/assets/css/todoList.css';
+@import '@/assets/css/todolist.css';  
 </style>
