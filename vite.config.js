@@ -1,4 +1,5 @@
 import { fileURLToPath, URL } from 'node:url'
+import { createRouter, createWebHistory } from 'vue-router'
 
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
@@ -16,4 +17,11 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     },
   },
+})
+
+const router = createRouter({
+  history: createWebHistory(import.meta.env.BASE_URL),
+  routes: [
+    // your routes...
+  ]
 })
