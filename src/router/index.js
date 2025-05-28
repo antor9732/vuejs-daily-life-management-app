@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
-import home from "@/views/home.vue";
+import todo_list_app from "@/views/Todo-List-App.vue";
 import weight_tracking from "@/views/weight-tracking.vue";
 import contact from "@/views/contact.vue";
 import team  from "@/views/team.vue";
@@ -9,8 +9,8 @@ const router = createRouter({
   routes: [
     {
       path: "/",
-      name: "home",
-      component: home,
+      name: "todo_list_app",
+      component: todo_list_app,
     },
    {
       path: "/weight-tracking",

@@ -75,7 +75,7 @@ watch(
 </script>
 
 <template>
-  <main>
+ <main>
     <h1>Weight Tracker</h1>
 
     <div class="current">
@@ -112,16 +112,6 @@ watch(
 </template>
 
 <style scoped>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: "montserrat", sans-serif;
-}
-
-body {
-  background-color: #f4f4f4;
-}
 main {
   padding: 1.5rem;
   display: flex;
@@ -129,54 +119,13 @@ main {
   align-items: center;
 }
 
-h1 {
-  text-align: center;
-  font-size: 2rem;
-  margin-bottom: 2rem;
-}
-
-h2 {
-  margin-bottom: 1rem;
-  text-align: center;
-  font-weight: 400;
-}
-
-.current {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  width: 200px;
-  height: 200px;
-
-  text-align: center;
-  background: white;
-  border-radius: 100px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  border: 3px solid rgb(163, 255, 247);
-
-  margin: 0 auto 2rem;
-}
-
-.current span {
-  display: block;
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-}
-.current small {
-  font-style: italic;
-  color: #666;
-}
-
 form {
-  max-width: 500px;
+  max-width: 900px;
   width: 100%;
   display: flex;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
   margin-bottom: 2rem;
-  border: 1px solid #aaa;
+  border: 1px solid var(--gray-light);
   border-radius: 0.5rem;
   overflow: hidden;
   transition: 200ms linear;
@@ -222,10 +171,10 @@ form input[type="submit"]:hover {
   border-left-color: #00bcd4;
 }
 
-@media (max-width: 600px) {
-    main {
-        padding: 0.5rem;
-    }
+@media (max-width: 800px) {
+  main {
+    padding: 0.5rem;
+  }
   form {
     flex-direction: row;
     gap: 0;
@@ -247,56 +196,14 @@ form input[type="submit"]:hover {
     border-radius: 0;
     font-size: 0.875rem;
   }
-}
 
-.history {
+  .history {
     width: 100%;
-    max-width: 500px;
-}
-.canvas-box {
-  width: 100%;
-  max-width: 720px;
-  background-color: white;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  margin-bottom: 2rem;
-}
-
-.weight-history ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.weight-history ul li {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.5rem;
-  cursor: pointer;
-}
-
-.weight-history ul li:nth-child(even) {
-  background-color: #c2c2c2;
-}
-.weight-history ul li:nth-child(odd) {
-  background-color: #e4fff3;
-}
-.weight-history ul li:hover {
-  background-color: #f0f0f0;
-}
-.weight-history ul li:last-of-type {
-  border-bottom: none;
-}
-.weight-history ul li span {
-  display: block;
-  font-size: 1.25rem;
-  font-weight: bold;
-  margin-right: 1rem;
-}
-
-.weight-history ul li small {
-  color: #666;
-  font-style: italic;
+    max-width: 550px;
+  }
+  .canvas-box {
+    width: 100%;
+    max-width: 550px;
+  }
 }
 </style>
