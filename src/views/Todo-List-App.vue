@@ -11,5 +11,5 @@ import "@/assets/css/todoList.css";
 
 <style >
 
-
+@import '@/assets/css/todoList.css';
 </style>
