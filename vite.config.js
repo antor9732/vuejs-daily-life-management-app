@@ -8,7 +8,7 @@ export default defineConfig({
     vue(),
     vueDevTools(),
   ],
-  base : '/vuejs-daily-life-management-app',
+  base : '/',
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
