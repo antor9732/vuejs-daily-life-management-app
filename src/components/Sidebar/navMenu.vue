@@ -29,7 +29,7 @@ const ToggleMenu = () => {
         <span class="material-icons">article</span>
         <span class="text">Todo-List-App</span>
       </router-link>
-      <router-link class="button" to="/about">
+      <router-link class="button" to="/weight-tracking">
         <span class="material-icons">speed</span>
         <span class="text">Weight-Tracking</span>
       </router-link>
