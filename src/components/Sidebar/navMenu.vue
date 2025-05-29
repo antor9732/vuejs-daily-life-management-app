@@ -5,11 +5,6 @@ import { useRouter } from 'vue-router';
 const router = useRouter();
 const is_expanded = ref(localStorage.getItem("is_expanded") === "true")
 
-const goToHomePage = () => {
-  router.push('/vuejs-daily-life-management-app');
-};
-
-
 const ToggleMenu = () => {
   is_expanded.value = !is_expanded.value
     localStorage.setItem("is_expanded", is_expanded.value)
@@ -19,7 +14,7 @@ const ToggleMenu = () => {
 
 <template>
   <aside :class="`${is_expanded && 'is_expanded'}`">
-    <div class="logo" @click="goToHomePage" style="cursor: pointer;">
+    <div class="logo" style="cursor: pointer;">
       <img src="@/assets/logo.svg" alt="vue" />
     </div>
 
