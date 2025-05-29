@@ -1,5 +1,5 @@
 <script setup>
-import { ref, shallowRef, computed, watch, nextTick } from "vue";
+import { ref, shallowRef, computed, watch, nextTick, onMounted } from "vue";
 import Chart from "chart.js/auto";
 
 
@@ -15,13 +15,42 @@ const currentWeight = computed(() => {
   return weights.value.sort((a, b) => b.date - a.date)[0] || { weight: 0 };
 });
 
+// const addWeight = () => {
+//   weights.value.push({
+//     weight: weightInput.value,
+//     date: new Date().getTime(),
+//   });
+// };
+
 const addWeight = () => {
-  weights.value.push({
-    weight: weightInput.value,
-    date: new Date().getTime(),
-  });
+  if (weightInput.value && !isNaN(weightInput.value)) {
+    weights.value.push({
+      weight: parseFloat(weightInput.value),
+      date: new Date().getTime(),
+    });
+    weightInput.value = null; // Clear input after adding
+  }
 };
 
+watch(
+  weights,
+  (newWeights) => {
+    localStorage.setItem("weights", JSON.stringify(newWeights));
+  },
+  { deep: true }
+);
+
+
+// Load weights from localStorage on component mount
+onMounted(() => {
+  const savedWeights = localStorage.getItem("weights");
+  if (savedWeights) {
+    weights.value = JSON.parse(savedWeights);
+  }
+});
+
+
+// Update chart when weights change
 watch(
   weights,
   (newWeights) => {

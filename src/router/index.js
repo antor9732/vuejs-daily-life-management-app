@@ -8,7 +8,7 @@ const router = createRouter({
   history: createWebHistory(),
   routes: [
     {
-      path: "/vuejs-daily-life-management-app",
+      path: "/VueJs-Daily-Life-Management-App",
       name: "todo_list_app",
       component: todo_list_app,
     },
