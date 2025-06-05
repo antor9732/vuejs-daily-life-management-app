@@ -1,3 +1,3 @@
 module.exports = {
-  publicPath: '/vuejs-daily-life-management-app/'
+  publicPath: '/VueJs-Daily-Life-Management-App/'
 };
