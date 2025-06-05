@@ -33,9 +33,9 @@ const ToggleMenu = () => {
         <span class="material-icons">speed</span>
         <span class="text">Weight-Tracking</span>
       </router-link>
-      <router-link class="button" to="/team">
-        <span class="material-icons">groups</span>
-        <span class="text">Team</span>
+      <router-link class="button" to="/weather-check-app">
+        <span class="material-icons">severe_cold</span>
+        <span class="text">weather-check-app</span>
       </router-link>
       <router-link class="button" to="/contact">
         <span class="material-icons">contacts</span>

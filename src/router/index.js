@@ -1,8 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import todo_list_app from "@/views/Todo-List-App.vue";
 import weight_tracking from "@/views/weight-tracking.vue";
-import contact from "@/views/contact.vue";
-import team  from "@/views/team.vue";
+import weatherCheck from "@/views/WeatherCheck-app.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -18,15 +17,11 @@ const router = createRouter({
       component: weight_tracking,
    },
    {
-    path: "/contact",
-    name: "contact",
-    component: contact,
+    path: "/weather-check-app",
+    name: "weather-check-app",
+    component: weatherCheck,
    },
-   {
-    path: "/team",
-    name: "team",
-    component: team,
-   }
+
   ],
 });
 
