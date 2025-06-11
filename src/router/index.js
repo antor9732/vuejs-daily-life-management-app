@@ -4,7 +4,8 @@ import weight_tracking from "@/views/weight-tracking.vue";
 import weatherCheck from "@/views/WeatherCheck-app.vue";
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  // This ensures routes work on GitHub Pages
+  history: createWebHashHistory('/'),
   routes: [
     {
       path: "/",
