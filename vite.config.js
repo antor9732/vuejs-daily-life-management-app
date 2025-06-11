@@ -4,7 +4,7 @@ import vue from '@vitejs/plugin-vue'
 
 export default defineConfig({
   plugins: [vue()],
-  base: '/',
+  base: '/vuejs-daily-life-management-app/', // Changed this line
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
