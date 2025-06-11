@@ -25,7 +25,7 @@ const ToggleMenu = () => {
     </div>
     <h1>My VueJs Project</h1>
     <div class="menu">
-      <router-link class="button" to="/vuejs-daily-life-management-app">
+      <router-link class="button" to="/">
         <span class="material-icons">article</span>
         <span class="text">Todo-List-App</span>
       </router-link>
