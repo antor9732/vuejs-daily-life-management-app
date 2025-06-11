@@ -1,0 +1,238 @@
+<script setup>
+import { ref, shallowRef, computed, watch, nextTick, onMounted } from "vue";
+import Chart from "chart.js/auto";
+
+
+const weights = ref([]);
+
+const weightChartE1 = ref(null);
+
+const weightChart = shallowRef(null);
+
+const weightInput = ref(null);
+
+const currentWeight = computed(() => {
+  return weights.value.sort((a, b) => b.date - a.date)[0] || { weight: 0 };
+});
+
+// const addWeight = () => {
+//   weights.value.push({
+//     weight: weightInput.value,
+//     date: new Date().getTime(),
+//   });
+// };
+
+const addWeight = () => {
+  if (weightInput.value && !isNaN(weightInput.value)) {
+    weights.value.push({
+      weight: parseFloat(weightInput.value),
+      date: new Date().getTime(),
+    });
+    weightInput.value = null; // Clear input after adding
+  }
+};
+
+watch(
+  weights,
+  (newWeights) => {
+    localStorage.setItem("weights", JSON.stringify(newWeights));
+  },
+  { deep: true }
+);
+
+
+// Load weights from localStorage on component mount
+onMounted(() => {
+  const savedWeights = localStorage.getItem("weights");
+  if (savedWeights) {
+    weights.value = JSON.parse(savedWeights);
+  }
+});
+
+
+// Update chart when weights change
+watch(
+  weights,
+  (newWeights) => {
+    const ws = [...newWeights];
+
+    if (weightChart.value) {
+      weightChart.value.data.labels = ws
+        .sort((a, b) => a.date - b.date)
+        .map((w) => new Date(w.date).toLocaleDateString())
+        .slice(-7);
+
+      weightChart.value.data.datasets[0].data = ws
+        .sort((a, b) => a.date - b.date)
+        .map((w) => w.weight)
+        .slice(-7);
+
+      weightChart.value.update();
+
+      return;
+    }
+
+    nextTick(() => {
+      weightChart.value = new Chart(weightChartE1.value.getContext("2d"), {
+        type: "line",
+        data: {
+          labels: ws
+            .sort((a, b) => a.date - b.date)
+            .map((w) => new Date(w.date).toLocaleDateString()),
+          datasets: [
+            {
+              label: "Weight (kg)",
+              data: ws.sort((a, b) => a.date - b.date).map((w) => w.weight),
+              borderColor: "rgba(75, 192, 192, 1)",
+              backgroundColor: "rgba(75, 192, 192, 0.2)",
+              borderWidth: 1,
+              pointRadius: 3,
+              pointBackgroundColor: "rgba(75, 192, 192, 1)",
+              fill: true,
+              tension: 0.1,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+        },
+      });
+    });
+  },
+  { deep: true }
+);
+</script>
+<template>
+     <main>
+    <h1>Weight Tracker</h1>
+
+    <div class="current">
+      <span>{{ currentWeight.weight }}</span>
+      <small>Current weight (kg)</small>
+    </div>
+
+    <form @submit.prevent="addWeight">
+      <input type="number" step="0.1" v-model="weightInput" placeholder="Enter weight (kg)"/>
+      <input type="submit" value="Add Weight" />
+    </form>
+    
+    <div class="history" v-if="weights && weights.length > 0">
+      <h2>Last 7 Days</h2>
+
+      <div class="canvas-box">
+        <canvas ref="weightChartE1"></canvas>
+      </div>
+
+      <div class="weight-history">
+        <h2>Weight History</h2>
+
+        <ul>
+          <li v-for="weight in weights" :key="weight.date">
+            <span>{{ weight.weight }}kg</span>
+            <small>
+              {{ new Date(weight.date).toLocaleDateString() }}
+            </small>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </main>
+</template>
+
+<style scoped>
+main {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form {
+  max-width: 900px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+  border: 1px solid var(--gray-light);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  transition: 200ms linear;
+}
+
+form:focus-within,
+form:hover {
+  border-color: #00bcd4;
+  border-width: 2px;
+}
+
+form input[type="number"] {
+  appearance: none;
+  outline: none;
+  border: none;
+  background: #fff;
+
+  flex: 1 1 auto;
+  min-width: 200px;
+  padding: 1rem 1.5rem;
+  font-size: 1.25rem;
+}
+
+form input[type="submit"] {
+  appearance: none;
+  outline: none;
+  border: none;
+  background: #00bcd4;
+
+  padding: 1rem 1.5rem;
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 200ms linear;
+  border-left: 3px solid #00bcd4;
+  flex-shrink: 0;
+}
+
+form input[type="submit"]:hover {
+  background: #fff;
+  color: #00bcd4;
+  border-left-color: #00bcd4;
+}
+
+@media (max-width: 800px) {
+  main {
+    padding: 0.5rem;
+  }
+  form {
+    flex-direction: row;
+    gap: 0;
+  }
+
+  form input[type="number"] {
+    width: 100%;
+    border-left: none;
+    border-top: none;
+    align-items: center;
+    text-align: center;
+    font-size: 1rem;
+    padding: 1rem;
+  }
+
+  form input[type="submit"] {
+    width: 100%;
+    border-top: none;
+    border-radius: 0;
+    font-size: 0.875rem;
+  }
+
+  .history {
+    width: 100%;
+    max-width: 550px;
+  }
+  .canvas-box {
+    width: 100%;
+    max-width: 550px;
+  }
+}
+</style>

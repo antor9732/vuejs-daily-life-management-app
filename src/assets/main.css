@@ -1,0 +1,153 @@
+:root {
+ --primary: #5e81f4;
+ --dark: #1e1e1e;
+ --light: #dddddd;
+  --white: #ffffff;
+  --black: #000000;
+  --light-blue: #53a1da;
+  --dark-blue: #1a73e8;
+  --light-green: #a5d6a7;
+  --dark-green: #388e3c;
+  --dark-red: #d32f2f;
+ --light-yellow: #fff9c4;
+ --dark-yellow: #fbc02d;
+ --grey: #e0e0e0;
+ --dark-grey: #333333;
+ --red: #e53935;
+ --green: #00c853;
+ --blue: #2196f3;
+ --yellow: #ffca28;
+ --sidebar-width: 300px;
+
+
+ --business: #680404;
+	--danger: #ff5b57;
+
+	--shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+	--business-glow: 0px 0px 4px rgba(250, 253, 64, 0.75);
+	--personal-glow: 0px 0px 4px rgba(95, 7, 129, 0.75);
+}
+* {
+  margin : 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Fira sans", sans-serif;
+}
+body {
+  background : var(--light);
+  color: var(--dark);
+}
+
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+h2 {
+  margin-bottom: 1rem;
+  text-align: center;
+  font-weight: 400;
+}
+
+.current {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 200px;
+  height: 200px;
+
+  text-align: center;
+  background: var(--white);
+  border-radius: 100px;
+  box-shadow: var(--shadow);
+  border: 3px solid rgb(163, 255, 247);
+
+  margin: 0 auto 2rem;
+}
+
+.current span {
+  display: block;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.current small {
+  font-style: italic;
+  color: #666;
+}
+
+
+.history {
+    width: 100%;
+    max-width: 900px;
+}
+.canvas-box {
+  width: 100%;
+  max-width: 900px;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.weight-history ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.weight-history ul li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.weight-history ul li:nth-child(even) {
+  background-color: #c2c2c2;
+}
+.weight-history ul li:nth-child(odd) {
+  background-color: #e4fff3;
+}
+.weight-history ul li:hover {
+  background-color: #f0f0f0;
+}
+.weight-history ul li:last-of-type {
+  border-bottom: none;
+}
+.weight-history ul li span {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-right: 1rem;
+}
+
+.weight-history ul li small {
+  color: #666;
+  font-style: italic;
+}
+
+button{
+  cursor: pointer;
+  appearance: none;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+.app {
+  display: flex;
+
+}
+.app main {
+    flex: 1 1 0;
+    padding: 2rem;
+    @media (max-width: 768px) {
+      padding-left: 6rem;
+    }
+  }
