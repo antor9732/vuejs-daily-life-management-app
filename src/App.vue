@@ -9,5 +9,3 @@ import Sidebar from "./components/Sidebar.vue"
     <router-view />
   </div>
 </template>
-
-
