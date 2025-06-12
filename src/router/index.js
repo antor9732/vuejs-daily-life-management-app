@@ -4,26 +4,24 @@ import weight_tracking from "@/views/weight-tracking.vue";
 import weatherCheck from "@/views/WeatherCheck-app.vue";
 
 const router = createRouter({
-  // This ensures routes work on GitHub Pages
-  history: createWebHashHistory('/'),
+  history: createWebHashHistory(), // Remove the '/' argument
   routes: [
     {
       path: "/",
       name: "todo_list_app",
       component: todo_list_app,
     },
-   {
+    {
       path: "/weight-tracking",
-      name: "weight-tracking",
+      name: "weight-tracking", 
       component: weight_tracking,
-   },
-   {
-    path: "/weather-check-app",
-    name: "weather-check-app",
-    component: weatherCheck,
-   },
-
+    },
+    {
+      path: "/weather-check-app",
+      name: "weather-check-app",
+      component: weatherCheck,
+    }
   ],
 });
 
-export default router
+export default router;
