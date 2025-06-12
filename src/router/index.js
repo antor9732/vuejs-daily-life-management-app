@@ -1,10 +1,10 @@
 import { createRouter, createWebHashHistory } from "vue-router";
-import todo_list_app from "@/views/Todo-List-App.vue";
-import weight_tracking from "@/views/weight-tracking.vue";
-import weatherCheck from "@/views/WeatherCheck-app.vue";
+import todo_list_app from "../views/Todo-List-App.vue";
+import weight_tracking from "../views/weight-tracking.vue";
+import weatherCheck from "../views/WeatherCheck-app.vue";
 
 const router = createRouter({
-  history: createWebHashHistory(import.meta.env.BASE_URL),
+  history: createWebHashHistory(), // Remove the BASE_URL argument
   routes: [
     {
       path: "/",
