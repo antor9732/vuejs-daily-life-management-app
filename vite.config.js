@@ -4,7 +4,7 @@ import vue from '@vitejs/plugin-vue'
 
 export default defineConfig({
   plugins: [vue()],
-  base: '/VueJs-Daily-Life-Management-App/',
+  base: './', // Change to relative path
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
@@ -12,12 +12,12 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    assetsDir: 'assets',
+    assetsDir: '',  // Change to empty string
     rollupOptions: {
       output: {
-        assetFileNames: 'assets/[name].[hash][extname]',
-        chunkFileNames: 'assets/[name].[hash].js',
-        entryFileNames: 'assets/[name].[hash].js'
+        assetFileNames: '[name].[hash][extname]',
+        chunkFileNames: '[name].[hash].js',
+        entryFileNames: '[name].[hash].js'
       }
     }
   }

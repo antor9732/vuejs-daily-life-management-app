@@ -11,30 +11,24 @@ permissions:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          fetch-depth: 0
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '20'
-
+          node-version: '18'
+      
       - name: Install dependencies
-        run: npm install
-
-      - name: Build the application
+        run: npm ci
+      
+      - name: Build
         run: npm run build
-
-      - name: Create .nojekyll file
+      
+      - name: Add .nojekyll file
         run: touch dist/.nojekyll
-
+      
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          publish_branch: gh-pages
+          folder: dist
+          branch: gh-pages
+          clean: true
