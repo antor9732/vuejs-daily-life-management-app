@@ -4,7 +4,7 @@ import weight_tracking from "@/views/weight-tracking.vue";
 import weatherCheck from "@/views/WeatherCheck-app.vue";
 
 const router = createRouter({
-  history: createWebHashHistory(), // Remove the '/' argument
+  history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: "/",
