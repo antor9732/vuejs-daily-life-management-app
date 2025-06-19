@@ -4,13 +4,12 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "deploy": "gh-pages -d dist"
+    "build": "vue-cli-service build",
+    "deploy": "node deploy.js"
   },
   "dependencies": {
     "chart.js": "^4.x.x",
+    "ftp-deploy": "^2.4.7",
     "sass": "^1.89.0",
     "vue": "^3.5.13",
     "vue-router": "^4.5.1"
@@ -21,5 +20,5 @@
     "vite": "^6.2.4",
     "vite-plugin-vue-devtools": "^7.7.2"
   },
-  "homepage": "https://antor9732.github.io/"
+  "homepage": "https://mahmudul-daily-life-management.infy.uk"
 }
